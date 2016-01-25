@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Ratings</h1>
+<p> Number of ratings: <%= @ratings.count %> </p>
+
+<ul>
+	 <% @ratings.each do |rating| %>
+		    <li> <%= rating %> </li>
+		     <% end %>
+	     </ul>
