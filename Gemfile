@@ -14,6 +14,12 @@ group :production do
 end
 # Something something, no one says why
 ruby '2.3.0'
+# Better errors
+group :development, :test do
+  gem "better_errors"
+
+  #...
+end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
