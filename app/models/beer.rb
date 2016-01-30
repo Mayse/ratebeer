@@ -9,4 +9,7 @@ class Beer < ActiveRecord::Base
 		a = arr.inject{ |sum, el| sum + el }.to_f / arr.size
 		a.round
 	end
+	def to_s
+	"#{self.name}, #{self.brewery.name}"
+	end
 end
