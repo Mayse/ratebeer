@@ -5,7 +5,7 @@ class Beer < ActiveRecord::Base
 	def average_rating
 
 		arr = []
-		Rating.all.each { |rating| arr << rating.score }
+		self.ratings.each { |rating| arr << rating.score }
 		a = arr.inject{ |sum, el| sum + el }.to_f / arr.size
 		a.round
 	end
