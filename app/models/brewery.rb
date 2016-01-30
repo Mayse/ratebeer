@@ -1,4 +1,6 @@
 class Brewery < ActiveRecord::Base
+	include RatingAverage
+
 	has_many :beers, dependent: :destroy
 	has_many :ratings, through: :beers
 
@@ -13,10 +15,4 @@ class Brewery < ActiveRecord::Base
 	puts "changed year to #{year}"
 	end
 
-	def average_rating
-        arr = []
-        self.ratings.each { |rating| arr << rating.score }
-        a = arr.inject{ |sum, el| sum + el }.to_f / arr.size
-        a.round
-	end
 end
