@@ -11,5 +11,5 @@ class User < ActiveRecord::Base
 	validates :password, length: {minimum: 4},
 			     format: { with: /(.*[A-Z].*[0-9]|.*[0-9].*[A-Z])/, message: "Must contain at least one number and capital letter"}
 
-	has_many :ratings   # käyttäjällä on monta ratingia
+	has_many :ratings, dependent: :destroy   # käyttäjällä on monta ratingia
 end
