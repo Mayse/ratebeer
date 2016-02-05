@@ -13,11 +13,13 @@
 		<%= link_to 'ratings', ratings_path %>
 		<%= link_to 'users', users_path  %>
 		|
+	<!-- navlinks for logged in user -->
 	<% if current_user %>
 		<%= link_to current_user.username, user_path(current_user) %> 
 		<%= link_to 'rate a beer', new_rating_path  %>
+		<%= link_to 'join a club', new_membership_path  %>
 		<%= link_to 'signout', session_path, method: :delete %>
-
+	<!-- navlinks for everyone else -->
 	<% else %>
 		<%= link_to 'signin', new_session_path  %>
 		<%= link_to 'signup', new_user_path %>

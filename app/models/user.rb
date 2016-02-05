@@ -2,6 +2,8 @@
 class User < ActiveRecord::Base
 	include RatingAverage
 
+	has_many :memberships
+
 	has_secure_password
 
 	#validates :username, uniqueness: true
