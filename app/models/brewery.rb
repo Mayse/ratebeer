@@ -8,6 +8,16 @@ class Brewery < ActiveRecord::Base
 	validates :year, numericality: { greater_than_or_equal_to: 1024,
 		                         less_than_or_equal_to: 2016,
 					 only_integer: true }
+	validate :year_between_1042_and_current
+
+	def year_between_1042_and_current
+		if self.year < 1042
+			errors.add(:year)
+		end
+		if self.year > DateTime.now.year
+			errors.add(:year)
+		end
+	end
 
 	def print_report
     	puts name
