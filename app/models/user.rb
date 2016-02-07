@@ -2,7 +2,7 @@
 class User < ActiveRecord::Base
 	include RatingAverage
 
-	has_many :memberships
+	has_many :memberships, dependent: :destroy
 
 	has_secure_password
 
