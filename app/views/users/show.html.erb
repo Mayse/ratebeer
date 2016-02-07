@@ -1,13 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Username:</strong>
+  <h1>
   <%= @user.username %>
+  </h1>
 </p>
 
 <p>
 has made <%= @user.ratings.count %> ratings, average <%= @user.average_rating %>
+</p>
 
+<p>
+<% if @user.memberships.empty? %>
+	not a member of any beer clubs
+<% else %>
+member of <% @user.memberships.each do |m| %>
+		<%= link_to m.beer_club.name, beer_club_path(m.beer_club) %>
+	  <% end %>
+  <% end %>
+</p>
+
+<p>
 <ul>
 	<% @user.ratings.each do |rating| %>
 		<li> <%= rating %> 

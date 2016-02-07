@@ -11,7 +11,19 @@
 </p>
 
 <p>
+<% if @beer_club.memberships.empty? %>
+	<h2> No members... yet </h2>
+<% else %>
 <h2>Members</h2>
+<% end %>
+<ul>
+	<% @beer_club.memberships.each do |u|  %>
+		<li>
+		<%= link_to u.user.username, user_path(u.user) %>
+		</li>
+	<% end %>
+
+</ul>
 </p>
 
 <%= link_to 'Edit', edit_beer_club_path(@beer_club) %> |
