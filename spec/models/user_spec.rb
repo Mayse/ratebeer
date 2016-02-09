@@ -26,48 +26,6 @@ RSpec.describe User, type: :model do
 		end
 	end
 
-	describe "favorite style" do
-		let(:user){FactoryGirl.create(:user)}
-		it "has method for determining the favorite_style" do
-			expect(user).to respond_to(:favorite_style)
-		end
-		it "without ratings does not have a favorite style" do
-			expect(user.favorite_style).to eq(nil)
-		end
-		it "is the favorite style if only one rating" do
-			beer = create_beer_with_rating(user, 10)
-			expect(user.favorite_style).to eq(beer.style)
-		end
-		it "is the style which beer has the highest rating" do
-	
-			lager = FactoryGirl.create(:beer, style:"Lager")
-			porter = FactoryGirl.create(:beer, style:"Porter")
-			ipa = FactoryGirl.create(:beer, style:"IPA")
-			rating1 = FactoryGirl.create(:rating, beer:lager, score:1)
-			rating2 = FactoryGirl.create(:rating, beer:porter, score:3)
-			rating3 = FactoryGirl.create(:rating, beer:ipa, score:2)
-			user.ratings << rating1
-			user.ratings << rating2
-			user.ratings << rating3
-			
-			expect(user.favorite_style).to eq(porter.style)
-		end
-		it "is the style which beers have the highest average" do
-			porter = FactoryGirl.create(:beer, style:"IPA")
-			lager = FactoryGirl.create(:beer, style:"Lager")
-			porter = FactoryGirl.create(:beer, style:"Porter")
-			rating1 = FactoryGirl.create(:rating, beer:lager, score:15)
-			rating2 = FactoryGirl.create(:rating, beer:porter, score:16)
-			rating3 = FactoryGirl.create(:rating, beer:porter, score:1)
-			user.ratings << rating1
-			user.ratings << rating2
-			user.ratings << rating3
-			
-			expect(user.favorite_style).to eq(lager.style)
-
-		end
-	end
-
 	describe "with only username set" do
 		let(:user){ User.create username:"pekka"}
 			it "is not saved without a password" do
