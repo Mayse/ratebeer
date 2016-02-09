@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Beer, type: :model do
+
 	describe "has a name and style set" do
 		let(:beer){ Beer.create name:"Birra", style:"Porter" }
 		it "is valid" do
