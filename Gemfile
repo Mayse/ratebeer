@@ -61,6 +61,11 @@ group :development do
 end
 
 group :development, :test do
-  #Testing suite for rails
+  # Testing suite for rails
   gem 'rspec-rails', '~> 3.0'
+end
+
+group :test do
+ # Fixtures replacement for tests
+  gem 'factory_girl_rails'
 end
