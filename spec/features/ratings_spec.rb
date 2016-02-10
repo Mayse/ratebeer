@@ -24,7 +24,7 @@ describe "Rating" do
 		expect(beer1.ratings.count).to eq(1)
 		expect(beer1.average_rating).to eq(15.0)
 	end
-	it "page shows the amount of ratings" do
+	it "ratings page shows the amount of ratings" do
 		place_ratings
 		visit ratings_path
 
@@ -38,6 +38,15 @@ describe "Rating" do
 		expect(page).to have_content "#{r.beer.name} #{r.score}"
 		end
 
+	end
+	it "user page does not show other users ratings" do
+		place_ratings
+		user2 = FactoryGirl.create(:user, username:'Paavo')
+		user2.ratings << FactoryGirl.create(:rating, beer:beer1, score:25)
+		visit user_path(user)
+		save_and_open_page
+	
+		expect(page).not_to have_content "#{user2.ratings.first.beer.name} #{user2.ratings.first.score}"
 	end
 end
 def place_ratings
