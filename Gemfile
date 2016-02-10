@@ -68,4 +68,7 @@ end
 group :test do
  # Fixtures replacement for tests
   gem 'factory_girl_rails'
+ # Capybara for system tests
+  gem 'capybara'
+  gem 'launchy'
 end
