@@ -44,9 +44,18 @@ describe "Rating" do
 		user2 = FactoryGirl.create(:user, username:'Paavo')
 		user2.ratings << FactoryGirl.create(:rating, beer:beer1, score:25)
 		visit user_path(user)
-		save_and_open_page
 	
 		expect(page).not_to have_content "#{user2.ratings.first.beer.name} #{user2.ratings.first.score}"
+	end
+	it "when clicking delete on rating it is removed from database" do
+		place_ratings
+		visit user_path(user)
+		user.ratings.each do
+		expect{first(:link, 'delete').click
+		}.to change{user.ratings.count}.by(-1)
+		end
+		expect(user.ratings.count).to eq(0)
+
 	end
 end
 def place_ratings
