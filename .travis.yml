@@ -1,10 +1,16 @@
 nguage: ruby
-
 rvm:
- - 2.3.0
-
+- 2.3.0
 script:
- - bundle exec rake db:migrate --trace
- - RAILS_ENV=test bundle exec rake db:migrate --trace
- - bundle exec rake db:test:prepare
- - bundle exec rspec -fd spec/
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: f95lzH99Y/T4VytFTvqe/1WnybKUrsKqbn8OCpYec4bmxFDHGTKP73VnnNzKciqul1dhWHDDx/oeifYFtAzZjS0b0Lz6hYmn5/3liDB+oo+MhcNeElXv4IaZZ7yk3KQZ6EqI8nsJoS/rvZIiR7ayHQZCDYjW7wTM/a5wFCN0YXjxn0i18xBPEnZbdL5Sdvtr5sFIiASpDlQE6OstYpu6NZ1NOU32tZ9CqEMBlTFMhXJH0t5ZZtAk0caOPC/JzVpa1M/XHKJ4ypjEAsRoUlPmXiKPs/Sfh7PFsnkoyRMO3TCKnbj4CHu+FcMzJ6w1Op0C9PhbG17hSVksaEG5Xio37uVQ0P7afWGRwaddIOMDs4itHEulSonLUEY/r701hypXcsOZjlm1aP3x/o6JSl7CcwRPlg20na8f8BSOU874S/CerEN8+2php/4iA5JOjUUDgeovA5Yflsml0V2k2NHC5WywdpCaeaCLZPUHDlaPWyANO2aItvVrlJDMlgLGy2AMD3uMwKpL5oD+0rYaRG00iG3jf5vDkdBt/tvvk2lszqb83AVO+jo84gVUBlRAyRgh1pS3J4fuuH5pltjtAtV/Sbjye0MlzRIuPZeOgXfdFa5JymHhCKBpxWK9hfFdeVsWNifnfEn1B+9Lb0VwK1/K/dv3FXR4KPawS58cUmCgZ8M=
+  run: "rake db:migrate"
+  app: enigmatic-tundra-35451
+  on:
+    repo: Mayse/ratebeer
