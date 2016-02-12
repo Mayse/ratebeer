@@ -5,6 +5,8 @@ include Helpers
 describe "Beer" do
 	before :each do
 		FactoryGirl.create :brewery
+		FactoryGirl.create :user
+		sign_in(username:"Pekka", password:"Foobar1")
 	end
 	it "is added with a valid name" do
 		visit beers_path
