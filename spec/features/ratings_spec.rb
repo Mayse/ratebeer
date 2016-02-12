@@ -54,7 +54,7 @@ describe "Rating" do
 		expect{first(:link, 'delete').click
 		}.to change{user.ratings.count}.by(-1)
 		end
-		expect(user.ratings.count).to eq(0)
+		expect(User.first.ratings).to be_empty
 
 	end
 end
