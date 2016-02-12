@@ -71,4 +71,6 @@ group :test do
  # Capybara for system tests
   gem 'capybara'
   gem 'launchy'
+ # Line coverage tool
+  gem 'simplecov', require: false
 end
