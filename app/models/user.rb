@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
 
 	def favorite_style
 		return nil if ratings.empty?
-		ratings.sort_by(&:score).last.beer.style
+		ratings.group_by{|r| r.beer.style}
+		#ratings.sort_by(&:score).last.beer.style
 	end
 end
