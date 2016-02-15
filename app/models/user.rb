@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 			     format: { with: /(.*[A-Z].*[0-9]|.*[0-9].*[A-Z])/, message: "Must contain at least one number and capital letter"}
 
 	def favorite_beer
-		return nil if ratings.empty?
+		return nil if ratings.empty?   # palautetaan nil jos reittauksia ei ole
 		ratings.order(score: :desc).limit(1).first.beer
 	end
 
