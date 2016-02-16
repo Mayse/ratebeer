@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
+# HTTParty for external services
+gem 'httparty'
 # Heroku PostgreSQL and sqlite locally
 group :development, :test do
   gem 'sqlite3'
