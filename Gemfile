@@ -75,4 +75,6 @@ group :test do
   gem 'launchy'
  # Line coverage tool
   gem 'simplecov', require: false
+ # Webmock for API stub behaviour
+  gem 'webmock'
 end
