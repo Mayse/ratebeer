@@ -14,3 +14,5 @@ deploy:
   app: enigmatic-tundra-35451
   on:
     repo: Mayse/ratebeer
+  env:
+          - APIKEY=28be4cd4e2d7e02dc06571c297b470bf
