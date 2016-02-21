@@ -29,8 +29,19 @@
 <% if current_user and current_user.memberships.where(beer_club_id:@membership.beer_club_id).empty? %>
 	<%= form_for(@membership) do |f| %>
 		<%= f.hidden_field :beer_club_id %>
+		<%= f.hidden_field :user_id %>
 		<%= f.submit value:"join the club" %>
 	<% end %>
+<% end %>
+
+<% if current_user and not current_user.memberships.where(beer_club_id:@membership.beer_club_id).empty? %>
+	<% @membership = (@beer_club.memberships.where user_id:current_user.id).first %>
+<%= form_for(@membership, method: "delete") do |f| %>
+	<%= f.hidden_field :beer_club_id %>
+	<%= f.hidden_field :user_id %>
+
+	<%= f.submit value: "end the membership" %>
+<% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_beer_club_path(@beer_club) %> |
