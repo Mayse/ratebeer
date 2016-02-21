@@ -9,4 +9,7 @@ class PlacesController < ApplicationController
 			render :index
 		end
 	end
+	def show
+		@place =  BeermappingApi.fetch_by_id(params["id"])
+	end
 end

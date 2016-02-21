@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+<strong>template</strong>
+<%= params["id"] %>
+<h1>
+<p>
+<%= @place["name"] %>
+</p>
+</h1>
+<p><%= @place["street"] %></p>
+<p><%= "#{@place["zip"]} #{@place["city"]}"  %></p>
+<p>
+<iframe src="<%= @place["blogmap"] %>"></iframe>
+</p>
