@@ -26,9 +26,11 @@
 </ul>
 </p>
 
-<%= form_for(@membership) do |f| %>
-	<%= f.hidden_field :beer_club_id %>
-	<%= f.submit value:"join the club" %>
+<% if current_user and current_user.memberships.where(beer_club_id:@membership.beer_club_id).empty? %>
+	<%= form_for(@membership) do |f| %>
+		<%= f.hidden_field :beer_club_id %>
+		<%= f.submit value:"join the club" %>
+	<% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_beer_club_path(@beer_club) %> |
