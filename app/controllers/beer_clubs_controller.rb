@@ -14,7 +14,9 @@ class BeerClubsController < ApplicationController
 	  @membership = Membership.new
 	  @membership.beer_club = @beer_club
 	  @membership.user_id = current_user.id
-	  @membership.id=Membership.where(beer_club_id:@membership.beer_club_id, user_id:@membership.user_id).first.id
+	  if not (@beer_club.memberships.where user_id:current_user.id).empty?
+		 @membership.id=Membership.where(beer_club_id:@membership.beer_club_id, user_id:@membership.user_id).first.id
+	 end
   end
 
   # GET /beer_clubs/new
