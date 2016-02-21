@@ -11,10 +11,19 @@
 			<td><%=f %></td>
 		<% end %>
 	</thead>
+
 	<% @places.each do |place| %>
 		<tr>
 			<% Place.rendered_fields.each do |f| %>
-				<td><%= place.send(f) %></td>
+				<% if f.inspect == ":name" %>derp<%
+					%><td>
+						<%= link_to place.name, place_path(place.id) %>
+				</td><%
+					else
+					%><td>
+						<%= place.send(f) %>
+				</td>
+				<% end %>
 			<% end %>
 		</tr>
 	<% end %>
