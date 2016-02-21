@@ -1,5 +1,6 @@
 class BeermappingApi
 	def self.places_in(city)
+		return "" if city==""
 		city = city.downcase
 		Rails.cache.fetch(city, expires_in:1.week, race_condition_ttl:5.minutes) { fetch_places_in(city) }
 	end
