@@ -6,6 +6,7 @@ describe "Beer" do
 	before :each do
 		FactoryGirl.create :brewery
 		FactoryGirl.create :user
+		FactoryGirl.create :style
 		sign_in(username:"Pekka", password:"Foobar1")
 	end
 	it "is added with a valid name" do

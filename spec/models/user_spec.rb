@@ -40,9 +40,12 @@ RSpec.describe User, type: :model do
 		end
 		it "is the style which beer has the highest rating" do
 	
-			lager = FactoryGirl.create(:beer, style:"Lager")
-			porter = FactoryGirl.create(:beer, style:"Porter")
-			ipa = FactoryGirl.create(:beer, style:"IPA")
+			style1 = Style.create(name:"Lager")
+			style2 = Style.create(name:"Porter")
+			lager = FactoryGirl.create(:beer, style:style1)
+			porter = FactoryGirl.create(:beer, style:style2)
+			style3 = Style.create(name:"IPA")
+			ipa = FactoryGirl.create(:beer, style:style3)
 			rating1 = FactoryGirl.create(:rating, beer:lager, score:1)
 			rating2 = FactoryGirl.create(:rating, beer:porter, score:3)
 			rating3 = FactoryGirl.create(:rating, beer:ipa, score:2)
@@ -53,9 +56,12 @@ RSpec.describe User, type: :model do
 			expect(user.favorite_style).to eq(porter.style)
 		end
 		it "is the style which beers have the highest average" do
-			porter = FactoryGirl.create(:beer, style:"IPA")
-			lager = FactoryGirl.create(:beer, style:"Lager")
-			porter = FactoryGirl.create(:beer, style:"Porter")
+			style1 = Style.create(name:"Lager")
+			style2 = Style.create(name:"Porter")
+			style3 = Style.create(name:"IPA")
+			porter = FactoryGirl.create(:beer, style:style3)
+			lager = FactoryGirl.create(:beer, style:style1)
+			porter = FactoryGirl.create(:beer, style:style2)
 			rating1 = FactoryGirl.create(:rating, beer:lager, score:15)
 			rating2 = FactoryGirl.create(:rating, beer:porter, score:16)
 			rating3 = FactoryGirl.create(:rating, beer:porter, score:1)

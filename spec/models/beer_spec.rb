@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Beer, type: :model do
 
 	describe "has a name and style set" do
-		let(:beer){ Beer.create name:"Birra", style:"Porter" }
+		let(:style){Style.create name:"Lager"}
+		let(:beer){ Beer.create name:"Birra", style:style} 
 		it "is valid" do
 			expect(beer).to be_valid
 		end
@@ -14,7 +15,9 @@ RSpec.describe Beer, type: :model do
 	end
 
 	describe "has only style set" do
-		let(:beer){Beer.create style:"Porter"}
+		let(:style){Style.create name:"Lager"}
+		let(:beer){Beer.create style:style}
+
 		it "is not valid" do
 			expect(beer).not_to be_valid
 		end
