@@ -9,6 +9,8 @@ gem 'httparty'
 group :development, :test do
   gem 'sqlite3'
 end
+# Bootstrap framework
+gem 'bootstrap-sass'
 
 group :production do
    gem 'pg'
@@ -60,6 +62,9 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  #Layout for bootsrap use
+  gem 'rails_layout'
 end
 
 group :development, :test do
