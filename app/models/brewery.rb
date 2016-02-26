@@ -10,6 +10,9 @@ class Brewery < ActiveRecord::Base
 					 only_integer: true }
 	validate :year_between_1042_and_current
 
+	scope :active, -> { where active:true }
+	scope :retired, -> {where active:[nil,false]}
+
 	def year_between_1042_and_current
 		if self.year < 1042
 			errors.add(:year)
