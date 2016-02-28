@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_that_is_admin , only: :toggle_account_suspended
 
   # GET /users
   # GET /users.json
@@ -65,6 +66,16 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
     end
+  end
+
+  # POST /users/:id/toggle_account_suspended
+  def toggle_account_suspended
+	  user = User.find(params[:id])
+	  user.update_attribute :account_suspended, (not user.account_suspended)
+
+	  new_status = user.account_suspended? ? "frozen" : "not frozen"
+
+	  redirect_to :back, notice:"User is now #{new_status}"
   end
 
   private

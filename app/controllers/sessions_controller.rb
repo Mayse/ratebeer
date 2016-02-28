@@ -6,6 +6,9 @@ class SessionsController < ApplicationController
   def create
 	  user = User.find_by username: params[:username]
 	  if user && user.authenticate(params[:password])
+				  if user.account_suspended?
+				  redirect_to :back, notice: "Your account is frozen please contact admin" and return
+			  end
 		  session[:user_id] = user.id
 		  redirect_to user_path(user), notice: "Welcome back!"
 	  else

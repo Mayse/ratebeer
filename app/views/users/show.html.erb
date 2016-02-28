@@ -33,6 +33,9 @@ member of <% @user.memberships.each do |m| %>
 
 
 </p>
+<% if current_user.admin? %>
+	<%= link_to "change freeze", toggle_account_suspended_user_path(@user.id), method: :post, class: "btn btn-danger" %>
+<% end %>
 
 <% if current_user == @user %>
 <%= link_to 'Delete', user_path(current_user), class:'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?' } %>
