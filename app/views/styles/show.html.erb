@@ -1,12 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <h1> <%= @style.name %></h1>
-</p>
+  <h2> <%= @style.name %></h2>
 
-<p>
+<quote>
   <%= @style.description %>
-</p>
+</quote>
 
 <p>
   <strong>Beers:</strong>
@@ -18,7 +16,6 @@
 	  <li> <%= link_to beer.name, beer_path(beer) %> by <%= link_to beer.brewery.name, brewery_path(beer.brewery) %> </li>
   <% end %>
 </ul>
-</p>
 
-<%= link_to 'Edit', edit_style_path(@style), class:"btn btn-primary" %> |
-<%= link_to 'Back', styles_path, class:"btn btn-primary" %>
+<%= edit_and_destroy_buttons(@style) %>
+</p>
