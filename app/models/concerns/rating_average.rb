@@ -5,6 +5,7 @@ module RatingAverage
 		arr = []
 		self.ratings.each { |rating| arr << rating.score }
 		a = arr.inject{ |sum, el| sum + el }.to_f / arr.size
-		a.round
+		#a.round
+		return a
 	end
 end
