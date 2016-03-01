@@ -21,3 +21,6 @@
 
 # Ignore code coverage tests
 /coverage
+
+#OsX files
+.DS_Store
