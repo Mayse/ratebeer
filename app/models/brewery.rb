@@ -22,6 +22,11 @@ class Brewery < ActiveRecord::Base
 		end
 	end
 
+	def self.top(n)
+		sorted_by_rating_average = Brewery.all.sort_by{ |b| -(b.average_rating || 0) }
+		sorted_by_rating_average[0, n]
+	end
+
 	def print_report
     	puts name
     	puts "established at year #{year}"

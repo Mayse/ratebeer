@@ -11,6 +11,11 @@ class User < ActiveRecord::Base
 	validates :password, length: {minimum: 4},
 			     format: { with: /(.*[A-Z].*[0-9]|.*[0-9].*[A-Z])/, message: "Must contain at least one number and capital letter"}
 
+	def self.top(n)
+		sorted = User.all.sort_by{ |b| -b.ratings.count }
+		sorted[0, n]
+	end
+
 	def favorite_beer
 		return nil if ratings.empty?   # palautetaan nil jos reittauksia ei ole
 		ratings.order(score: :desc).limit(1).first.beer
