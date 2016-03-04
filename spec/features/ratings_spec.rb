@@ -24,12 +24,6 @@ describe "Rating" do
 		expect(beer1.ratings.count).to eq(1)
 		expect(beer1.average_rating).to eq(15.0)
 	end
-	it "ratings page shows the amount of ratings" do
-		place_ratings
-		visit ratings_path
-
-		expect(page).to have_content "Number of ratings: #{Rating.count}"
-	end
 	it "lists the rated beers and scores" do
 		place_ratings
 		visit ratings_path
