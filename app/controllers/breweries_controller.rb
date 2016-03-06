@@ -11,6 +11,11 @@ class BreweriesController < ApplicationController
 
 	  order = params[:order] || 'name'
 
+	  if session[:dir] == nil then session[:dir] = 'asc'
+	  elsif session[:dir] == 'asc' then session[:dir] = 'desc'
+	  elsif session[:dir] == 'desc' then session[:dir] = 'asc'
+	  end
+
 	  @active_breweries = case order
 			      when 'name' then @active_breweries.sort_by{ |b| b.name}
 			      when 'year' then @active_breweries.sort_by{ |b| b.year}
@@ -21,6 +26,10 @@ class BreweriesController < ApplicationController
 			      when 'year' then @retired_breweries.sort_by{ |b| b.year}
 			      end
 
+	  if session[:dir] == 'asc'
+		  @active_breweries = @active_breweries.reverse
+		  @retired_breweries = @retired_breweries.reverse
+	  end
   end
 
   # GET /breweries/1
