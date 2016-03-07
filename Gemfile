@@ -78,6 +78,8 @@ group :test do
   gem 'factory_girl_rails'
  # Capybara for system tests
   gem 'capybara'
+ # Selenium for js tests
+  gem 'selenium-webdriver'
   gem 'launchy'
  # Line coverage tool
   gem 'simplecov', require: false
