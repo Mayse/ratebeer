@@ -80,6 +80,8 @@ group :test do
   gem 'capybara'
  # Selenium for js tests
   gem 'selenium-webdriver'
+ # DatabaseCleaner for Selenium test cleanup
+  gem 'database_cleaner'
   gem 'launchy'
  # Line coverage tool
   gem 'simplecov', require: false
