@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   end
 
   get 'beerlist', to:'beers#list'
+  get 'brewerylist', to:'breweries#list'
   get 'ngbeerlist', to:'beers#nglist'
 
  # get 'ratings', to: 'ratings#index'
