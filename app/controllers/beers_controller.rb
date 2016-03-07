@@ -1,5 +1,5 @@
 class BeersController < ApplicationController
-  before_action :ensure_that_signed_in, except: [:index, :show]
+  before_action :ensure_that_signed_in, except: [:index, :show, :list, :nglist]
   before_action :set_beer, only: [:show, :edit, :update, :destroy]
   before_action :set_breweries_and_styles_for_template, only: [:new, :edit]
   before_action :ensure_that_is_admin, only: :destroy
@@ -8,6 +8,14 @@ class BeersController < ApplicationController
 	  @breweries = Brewery.all
   	  @styles = Style.all 
 		  #@Style.all #["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+  end
+
+  # GET /list
+  def list
+  end
+
+  # GET /nglist
+  def nglist
   end
 
   # GET /beers

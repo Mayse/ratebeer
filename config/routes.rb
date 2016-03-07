@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 	  post 'toggle_account_suspended', on: :member
   end
 
+  get 'beerlist', to:'beers#list'
+  get 'ngbeerlist', to:'beers#nglist'
+
  # get 'ratings', to: 'ratings#index'
  # get 'ratings/new', to:'ratings#new'
  # post 'ratings', to: 'ratings#create'

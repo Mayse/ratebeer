@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+# JQuery for javascript stuff
+gem 'jquery-turbolinks'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # HTTParty for external services
